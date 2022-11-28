@@ -1,9 +1,19 @@
-import React from 'react';
+import React from "react";
+import {Route, Routes} from "react-router-dom";
+
+import MainLayout from "./layouts/MainLayout";
+import Home from "./pages/Home";
+import Instruction from "./pages/Instruction";
 
 function App() {
-  return (
-    <h1>Самооценка местных сообществ к изменению климата</h1>
-  );
+    return (
+        <Routes>
+            <Route path="/" element={<MainLayout/>}>
+                <Route path="" element={<Home/>}/>
+                <Route path="instruction" element={<Instruction/>}/>
+            </Route>
+        </Routes>
+    );
 }
 
 export default App;

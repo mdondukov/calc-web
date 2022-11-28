@@ -1,0 +1,20 @@
+import React from "react";
+
+import logoSvg from "../assets/img/logo_green.svg";
+import partnersPng from "../assets/img/partners.png";
+import {Link} from "react-router-dom";
+
+export const Header: React.FC = () => {
+    return (
+        <div className="flex justify-between items-center mb-12">
+            <Link to="/">
+                <img
+                    src={logoSvg}
+                    alt="Проект ЭД 'БИОМ' 'Устойчивость молодежи к изменению климата'"
+                    className="w-[240px]"
+                />
+            </Link>
+            <img src={partnersPng} alt="Партнеры проекта" className="w-[420px]"/>
+        </div>
+    )
+}
