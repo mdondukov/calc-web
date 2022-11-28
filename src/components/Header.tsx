@@ -14,7 +14,11 @@ export const Header: React.FC = () => {
                     className="w-[240px]"
                 />
             </Link>
-            <img src={partnersPng} alt="Партнеры проекта" className="w-[420px]"/>
+            <img
+                src={partnersPng}
+                alt="Партнеры проекта"
+                className="w-[420px]"
+            />
         </div>
     )
 }

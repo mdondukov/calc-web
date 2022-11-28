@@ -1,6 +1,6 @@
 import React from "react";
 
-import {StartButton, InstButton} from "../components";
+import {StartButton, Instruction} from "../components";
 import jamStartSvg from "../assets/img/jamilya_start.svg"
 
 const Home: React.FC = () => {
@@ -36,7 +36,9 @@ const Home: React.FC = () => {
                                 насколько Ваше местное сообщество уязвимо к изменению климата.</p>
                             <p>Жмите «Начать» и отвечайте на несложные вопросы.</p>
                         </div>
-                        <div className="flex justify-center"><InstButton/></div>
+                        <div className="flex justify-center">
+                            <Instruction />
+                        </div>
                     </div>
                     <div className="flex-none">
                         <img src={jamStartSvg} alt="Жамиля" className="w-[240px]"/>
