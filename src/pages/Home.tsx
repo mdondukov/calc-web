@@ -37,7 +37,7 @@ const Home: React.FC = () => {
                             <p>Жмите «Начать» и отвечайте на несложные вопросы.</p>
                         </div>
                         <div className="flex justify-center">
-                            <Instruction />
+                            <Instruction/>
                         </div>
                     </div>
                     <div className="flex-none">

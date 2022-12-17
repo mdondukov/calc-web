@@ -8,10 +8,10 @@ type ModalProps = {
 
 export const Modal: React.FC<ModalProps> = ({setOpen, children}) => {
     return (
-        <div className="absolute top-0 left-0 w-full h-full bg-black/80 backdrop-blur-md">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/5 rounded-xl bg-white p-12">
+        <div className="absolute top-0 left-0 w-full h-full bg-black/70 backdrop-blur-md">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/5 rounded-xl bg-white p-10">
                 <AiOutlineClose
-                    size={24}
+                    size={22}
                     onClick={() => setOpen(false)}
                     className="text-blue-800 hover:opacity-75 absolute top-4 right-4 cursor-pointer"
                 />
