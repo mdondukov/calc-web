@@ -1,6 +1,6 @@
 import React from "react";
 
-import {StartButton, Instruction} from "../components";
+import {MainButton, Instruction} from "../components";
 import jamStartSvg from "../assets/img/jamilya_start.svg"
 
 const Home: React.FC = () => {
@@ -25,7 +25,7 @@ const Home: React.FC = () => {
                         И еще это интересный и увлекательный процесс!
                     </p>
                 </div>
-                <StartButton/>
+                <MainButton path="/region" name="Начать"/>
             </div>
             <div className="col-span-6">
                 <div className="flex lg:ml-6">

@@ -1,6 +1,8 @@
 import React from "react";
 import {AiOutlineClose} from "react-icons/ai";
 
+import {MainButton} from "../components";
+
 type RegionType = {
     id: number,
     name: string,
@@ -114,8 +116,9 @@ const Region: React.FC = () => {
                                 onClick={() => setRegion({id: 0, name: "", content: ""})}
                                 className="text-blue-800 hover:opacity-75 absolute top-4 right-4 cursor-pointer"
                             />
-                            <h2 className="text-2xl text-lime-500 font-bold uppercase mb-4">{region.name}</h2>
-                            <p className="break-normal">{region.content}</p>
+                            <h2 className="text-2xl text-lime-500 font-bold uppercase mb-6">{region.name}</h2>
+                            <p className="break-normal mb-6">{region.content}</p>
+                            <MainButton path="/altitude" name="Далее"/>
                         </div>
                     )
                 }
