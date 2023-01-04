@@ -1,7 +1,7 @@
 import React from "react";
+import {AiOutlineClose} from "react-icons/ai";
 
 import altitudePng from "../assets/img/altitude.png"
-import {AiOutlineClose} from "react-icons/ai";
 import {MainButton} from "../components";
 
 type AltitudeType = {
@@ -56,9 +56,7 @@ const Altitude: React.FC = () => {
                 }
                 {
                     altitude.id !== 0 && (
-                        <div
-                            className="absolute w-2/5 rounded-xl bg-white/80 p-10 top-0 left-0"
-                        >
+                        <div className="absolute w-2/5 rounded-xl bg-white/80 p-10 top-0 left-0">
                             <AiOutlineClose
                                 size={22}
                                 onClick={() => setAltitude({id: 0, name: "", content: ""})}
