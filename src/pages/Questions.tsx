@@ -50,7 +50,7 @@ const Questions: React.FC = () => {
                 </div>
             </div>
             {
-                group.questions.length === selects.length && <MainButton path="/questions" name="Далее"/>
+                group.questions.length === selects.length && <MainButton path="/radar" name="Далее"/>
             }
         </>
     )

@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Region from "./pages/Region";
 import Altitude from "./pages/Altitude";
 import Questions from "./pages/Questions";
+import Radar from "./pages/Radar";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Route path="region" element={<Region/>}/>
                 <Route path="altitude" element={<Altitude/>}/>
                 <Route path="questions" element={<Questions/>}/>
+                <Route path="radar" element={<Radar/>}/>
             </Route>
         </Routes>
     );

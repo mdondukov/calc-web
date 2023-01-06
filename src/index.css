@@ -13,3 +13,7 @@ body {
 .logo {
   width: 300px;
 }
+
+.radar text {
+  font-weight: 500;
+}
