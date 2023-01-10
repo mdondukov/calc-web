@@ -1,12 +1,12 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-type MainButtonType = {
-    path: string,
+interface MainButtonProps {
+    path: string
     name: string
 }
 
-export const MainButton: React.FC<MainButtonType> = ({path, name}: MainButtonType) => {
+export const MainButton: React.FC<MainButtonProps> = ({path, name}: MainButtonProps) => {
     return (
         <Link
             to={path}

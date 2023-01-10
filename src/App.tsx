@@ -3,20 +3,14 @@ import {Route, Routes} from "react-router-dom";
 
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
-import Region from "./pages/Region";
-import Altitude from "./pages/Altitude";
-import Questions from "./pages/Questions";
-import Radar from "./pages/Radar";
+import Poll from "./pages/Poll";
 
 function App() {
     return (
         <Routes>
             <Route path="/" element={<MainLayout/>}>
-                <Route path="" element={<Home/>}/>
-                <Route path="region" element={<Region/>}/>
-                <Route path="altitude" element={<Altitude/>}/>
-                <Route path="questions" element={<Questions/>}/>
-                <Route path="radar" element={<Radar/>}/>
+                <Route index element={<Home/>}/>
+                <Route path="poll" element={<Poll/>}/>
             </Route>
         </Routes>
     );

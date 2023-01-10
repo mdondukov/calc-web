@@ -18,7 +18,7 @@ const Home: React.FC = () => {
                         адаптации и смягчения последствий изменения климата.</p>
                     <p>И еще это интересный и увлекательный процесс!</p>
                 </div>
-                <MainButton path="/region" name="Начать"/>
+                <MainButton path="/poll" name="Начать"/>
             </div>
             <div className="col-span-6">
                 <div className="flex lg:ml-6">
