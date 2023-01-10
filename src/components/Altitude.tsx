@@ -65,7 +65,7 @@ export const Altitude: React.FC = observer(() => {
                 }
                 {
                     answer && (
-                        <div className="absolute w-2/5 rounded-xl bg-white/80 p-10 top-0 left-0">
+                        <div className="absolute w-2/5 rounded-xl bg-white/80 p-10 top-0 left-0 shadow-2xl">
                             <AiOutlineClose
                                 size={22}
                                 onClick={() => {

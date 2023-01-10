@@ -1,6 +1,7 @@
 export * from "./Logo"
 export * from "./Header"
 export * from "./Modal"
+export * from "./Alert"
 export * from "./Instruction"
 export * from "./Navigation"
 export * from "./Question"

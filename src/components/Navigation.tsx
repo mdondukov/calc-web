@@ -5,20 +5,20 @@ import {useStores} from "../hooks/use-stores";
 import {IStep} from "../store/StepStore";
 import {AiOutlineArrowRight} from "react-icons/ai";
 import {BsFillGeoAltFill} from "react-icons/bs";
-import {FaMountain, FaHeartbeat, FaCar, FaCity, FaRecycle, FaUsers, FaTree} from "react-icons/fa";
+import {FaCar, FaCity, FaHeartbeat, FaMountain, FaRecycle, FaTree, FaUsers} from "react-icons/fa";
 import {MdAgriculture, MdSanitizer} from "react-icons/md";
-import {RiLightbulbFlashFill, RiAlarmWarningFill} from "react-icons/ri";
+import {RiAlarmWarningFill, RiLightbulbFlashFill} from "react-icons/ri";
+import {Alert, AlertType, IAlert} from "./Alert";
 
 const ICON_SIZE = 32
 
 export const Navigation: React.FC = observer(() => {
     const {steps, active, setActiveStep} = useStores().stepStore
-
-    // steps.forEach(step => {
-    //     console.log(`Step ${step.name} isComplete ${step.isComplete}`)
-    // })
+    const [alert, setAlert] = React.useState<IAlert | null>(null)
+    const [openAlert, setOpenAlert] = React.useState<boolean>(false)
 
     return (
+        <>
         <div className="flex mb-10">
             {
                 steps.map((step, index) =>
@@ -39,7 +39,12 @@ export const Navigation: React.FC = observer(() => {
                                     if (active.isComplete) {
                                         setActiveStep(step.id)
                                     } else {
-                                        alert(`Невозможно перейти к разделу "${step.name}". Сначала ответьте на все вопросы текущего раздела.`)
+                                        setAlert({
+                                            type: AlertType.ERROR,
+                                            name: "Ошибка",
+                                            desc: `Невозможно перейти к разделу "${step.name}". Сначала ответьте на все вопросы текущего раздела.`
+                                        })
+                                        setOpenAlert(true)
                                     }
                                 }
                             }}
@@ -54,6 +59,15 @@ export const Navigation: React.FC = observer(() => {
                 )
             }
         </div>
+            {
+                (alert && openAlert) && (
+                    <Alert
+                        alert={{type: alert.type, name: alert.name, desc: alert.desc}}
+                        setOpen={setOpenAlert}
+                    />
+                )
+            }
+        </>
     )
 })
 

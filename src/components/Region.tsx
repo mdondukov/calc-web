@@ -118,7 +118,7 @@ export const Region: React.FC = observer(() => {
                 {
                     answer && (
                         <div
-                            className={`absolute w-2/5 rounded-xl bg-white/80 p-10 ` + getPosition(answer.id)}
+                            className={`absolute w-2/5 rounded-xl bg-white/80 p-10 shadow-2xl ` + getPosition(answer.id)}
                         >
                             <AiOutlineClose
                                 size={22}
