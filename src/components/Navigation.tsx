@@ -1,13 +1,13 @@
 import React from "react";
-
 import {observer} from "mobx-react-lite";
-import {useStores} from "../hooks/use-stores";
-import {IStep} from "../store/StepStore";
 import {AiOutlineArrowRight} from "react-icons/ai";
 import {BsFillGeoAltFill} from "react-icons/bs";
 import {FaCar, FaCity, FaHeartbeat, FaMountain, FaRecycle, FaTree, FaUsers} from "react-icons/fa";
 import {MdAgriculture, MdSanitizer} from "react-icons/md";
 import {RiAlarmWarningFill, RiLightbulbFlashFill} from "react-icons/ri";
+
+import {useStores} from "../hooks/use-stores";
+import {IStep} from "../store/StepStore";
 import {Alert, AlertType, IAlert} from "./Alert";
 
 const ICON_SIZE = 32
@@ -19,46 +19,48 @@ export const Navigation: React.FC = observer(() => {
 
     return (
         <>
-        <div className="flex mb-10">
-            {
-                steps.map((step, index) =>
-                    <div key={step.id} className={index === 0 ? `flex-none` : `grow flex`}>
-                        {
-                            index !== 0 && (
-                                <div className="grow inline-flex items-center">
-                                    <hr className={
-                                        `w-full text-white border-t-2 border-t border-dotted ` +
-                                        `${step.id === active.id ? `border-amber-300` : `text-gray-300`}`
-                                    }/>
-                                </div>
-                            )
-                        }
-                        <div
-                            onClick={() => {
-                                if (step.isComplete) {
-                                    if (active.isComplete) {
-                                        setActiveStep(step.id)
-                                    } else {
-                                        setAlert({
-                                            type: AlertType.ERROR,
-                                            name: "Ошибка",
-                                            desc: `Невозможно перейти к разделу "${step.name}". Сначала ответьте на все вопросы текущего раздела.`
-                                        })
-                                        setOpenAlert(true)
-                                    }
-                                }
-                            }}
-                            className={
-                                `flex-none rounded-full p-2 text-center inline-flex items-center ` +
-                                getColor(step, active.id)
+            <div className="flex mb-10">
+                {
+                    steps.map((step, index) =>
+                        <div key={step.id} className={index === 0 ? `flex-none` : `grow flex`}>
+                            {
+                                index !== 0 && (
+                                    <div className="grow inline-flex items-center">
+                                        <hr className={
+                                            `w-full text-white border-t-2 border-t border-dotted ` +
+                                            `${(step.id === active.id || step.isComplete)
+                                                ? `border-amber-300` : `text-gray-300`
+                                            }`
+                                        }/>
+                                    </div>
+                                )
                             }
-                        >
-                            {getIcon(step)}
+                            <div
+                                onClick={() => {
+                                    if (step.isComplete) {
+                                        if (active.isComplete) {
+                                            setActiveStep(step.id)
+                                        } else {
+                                            setAlert({
+                                                type: AlertType.ERROR,
+                                                name: "Ошибка",
+                                                desc: `Невозможно перейти к разделу "${step.name}". Сначала ответьте на все вопросы текущего раздела.`
+                                            })
+                                            setOpenAlert(true)
+                                        }
+                                    }
+                                }}
+                                className={
+                                    `flex-none rounded-full p-2 text-center inline-flex items-center ` +
+                                    getColor(step, active.id)
+                                }
+                            >
+                                {getIcon(step)}
+                            </div>
                         </div>
-                    </div>
-                )
-            }
-        </div>
+                    )
+                }
+            </div>
             {
                 (alert && openAlert) && (
                     <Alert

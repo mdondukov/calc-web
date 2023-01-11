@@ -1,9 +1,9 @@
 import React from "react";
+import {observer} from "mobx-react-lite";
 import {AiOutlineClose} from "react-icons/ai";
 
 import {NextButton} from "./index";
 import {useStores} from "../hooks/use-stores";
-import {observer} from "mobx-react-lite";
 import {IAnswer} from "../store/StepStore";
 
 export const Region: React.FC = observer(() => {

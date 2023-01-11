@@ -1,8 +1,8 @@
 import React from "react";
+import {observer} from "mobx-react-lite";
 
 import {NextButton, Question} from "./index";
 import {useStores} from "../hooks/use-stores";
-import {observer} from "mobx-react-lite";
 
 export const Questions: React.FC = observer(() => {
     const {active} = useStores().stepStore

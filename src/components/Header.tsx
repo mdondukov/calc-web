@@ -1,8 +1,8 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 import logoSvg from "../assets/img/logo_green.svg";
 import partnersPng from "../assets/img/partners.png";
-import {Link} from "react-router-dom";
 
 export const Header: React.FC = () => {
     return (

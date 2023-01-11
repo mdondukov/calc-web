@@ -1,11 +1,11 @@
 import React from "react";
 import {AiOutlineClose} from "react-icons/ai";
+import {observer} from "mobx-react-lite";
 
-import altitudePng from "../assets/img/altitude.png"
 import {NextButton} from "./index";
 import {IAnswer} from "../store/StepStore";
 import {useStores} from "../hooks/use-stores";
-import {observer} from "mobx-react-lite";
+import altitudePng from "../assets/img/altitude.png"
 
 export const Altitude: React.FC = observer(() => {
     const {active, setSelectAnswer, fetchAnswer, setIncompleteStep} = useStores().stepStore

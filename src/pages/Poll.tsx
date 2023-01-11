@@ -1,7 +1,7 @@
 import React from "react";
+import {observer} from "mobx-react-lite";
 
 import {Altitude, Navigation, Questions, Region} from "../components";
-import {observer} from "mobx-react-lite";
 import {useStores} from "../hooks/use-stores";
 import {StepType} from "../store/StepStore";
 
