@@ -115,7 +115,62 @@ export class StepStore {
         {
             id: 3,
             name: "Самоорганизация и потенциал местного сообщества",
-            questions: [],
+            questions: [
+                {
+                    id: 1,
+                    content: "Существует ли в местном сообществе план мероприятий по вопросам изменения климата, является ли эта деятельность одной из приоритетных?",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "0 - нет",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "1",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "2",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "3 - несколько",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                },
+                {
+                    id: 2,
+                    content: "Принимают ли участие в разработке плана мероприятий по ИК молодежь, женщины, бедное население, уязвимые группы?",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "до 10%",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "30%",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "50%",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "80% и более",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                }
+            ],
             type: StepType.INDICATOR,
             nextStepId: 4,
             isComplete: false

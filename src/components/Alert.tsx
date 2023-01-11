@@ -18,7 +18,7 @@ export enum AlertType {
 
 export const Alert: React.FC<AlertProps> = ({alert, setOpen}) => {
     return (
-        <div className="absolute top-0 left-0 w-full h-full z-10">
+        <div className="absolute top-0 left-0 w-full h-full z-50">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2/5 rounded-xl bg-white p-10 shadow-2xl">
                 <AiOutlineClose
                     size={22}
@@ -27,13 +27,13 @@ export const Alert: React.FC<AlertProps> = ({alert, setOpen}) => {
                 />
                 <h1
                     className={
-                        `text-sm font-bold uppercase mb-4 ` +
+                        `text-lg font-bold uppercase mb-4 ` +
                         getNameColor(alert.type)
                     }
                 >
                     {alert.name}
                 </h1>
-                <p className="text-sm">
+                <p>
                     {alert.desc}
                 </p>
             </div>
