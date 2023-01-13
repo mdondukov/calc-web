@@ -118,7 +118,7 @@ export class StepStore {
             questions: [
                 {
                     id: 1,
-                    content: "Существует ли в местном сообществе план мероприятий по вопросам изменения климата, является ли эта деятельность одной из приоритетных?",
+                    content: "Существует ли в местном сообществе план мероприятий по вопросам изменения климата, является ли эта деятельность одной из приоритетных",
                     answers: [
                         {
                             id: 1,
@@ -145,11 +145,11 @@ export class StepStore {
                 },
                 {
                     id: 2,
-                    content: "Принимают ли участие в разработке плана мероприятий по ИК молодежь, женщины, бедное население, уязвимые группы?",
+                    content: "Принимают ли участие в разработке плана мероприятий по ИК молодежь, женщины, бедное население, уязвимые группы",
                     answers: [
                         {
                             id: 1,
-                            content: "до 10%",
+                            content: "10% и менее",
                             desc: null
                         },
                         {
@@ -178,7 +178,62 @@ export class StepStore {
         {
             id: 4,
             name: "Сельское хозяйство",
-            questions: [],
+            questions: [
+                {
+                    id: 3,
+                    content: "Достаточность пастбищ",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "критически не достаточно",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "не достаточно",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "достаточно, но есть проблемы",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "достаточно",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                },
+                {
+                    id: 4,
+                    content: "Степень деградации пастбищ",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "отсутствие деградации",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "минимальная",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "существенная",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "сильная деградация",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                }
+            ],
             type: StepType.INDICATOR,
             nextStepId: 5,
             isComplete: false
@@ -186,7 +241,62 @@ export class StepStore {
         {
             id: 5,
             name: "Энергетика и энергоэффективность",
-            questions: [],
+            questions: [
+                {
+                    id: 5,
+                    content: "Количество домохозяйств, зависящих от угля",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "80% и более",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "50%",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "30%",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "10% и менее",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                },
+                {
+                    id: 6,
+                    content: "Количество домохозяйств, зависящих от дров",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "80% и более",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "50%",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "30%",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "10% и менее",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                }
+            ],
             type: StepType.INDICATOR,
             nextStepId: 6,
             isComplete: false
@@ -194,7 +304,62 @@ export class StepStore {
         {
             id: 6,
             name: "Здоровье населения",
-            questions: [],
+            questions: [
+                {
+                    id: 6,
+                    content: "Количество лиц с заболеваниями сердечно-сосудистой системы",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "80% и более",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "50%",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "30%",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "10% и менее",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                },
+                {
+                    id: 7,
+                    content: "Количество лиц с заболеваниями дыхательной системы",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "80% и более",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "50%",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "30%",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "10% и менее",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                }
+            ],
             type: StepType.INDICATOR,
             nextStepId: 7,
             isComplete: false
@@ -202,7 +367,62 @@ export class StepStore {
         {
             id: 7,
             name: "Естественная среда",
-            questions: [],
+            questions: [
+                {
+                    id: 8,
+                    content: "Наличие селеопасных рек",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "периодически повторяются сели",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "частично селеопасные",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "есть в некоторых местах",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "нет",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                },
+                {
+                    id: 9,
+                    content: "Наличие пойменных лесов",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "нет",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "полностью вырублены",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "частично вырублены",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "есть в некоторых местах",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                }
+            ],
             type: StepType.INDICATOR,
             nextStepId: 8,
             isComplete: false
@@ -210,7 +430,62 @@ export class StepStore {
         {
             id: 8,
             name: "Инфраструктура, туризм, транспорт",
-            questions: [],
+            questions: [
+                {
+                    id: 10,
+                    content: "Влияние ИК (сели, оползни, снегопады, лавины) на транспортную доступность села",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "сильное влияние",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "влияние",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "среднее",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "минимальное или отсутствует",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                },
+                {
+                    id: 11,
+                    content: "Наличие туристических мест и дестинаций для размещения туристов в селе",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "нет",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "есть большой потенциал",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "есть один туристический комплекс",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "туризм развит",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                }
+            ],
             type: StepType.INDICATOR,
             nextStepId: 9,
             isComplete: false
@@ -218,7 +493,52 @@ export class StepStore {
         {
             id: 9,
             name: "Вода, санитария, гигиена",
-            questions: [],
+            questions: [
+                {
+                    id: 12,
+                    content: "Наличие системы центрального водоснабжения",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "нет",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "есть",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                },
+                {
+                    id: 13,
+                    content: "Количество воды для социальных объектов (школы, больницы)",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "недостаточно критически",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "с перебоями подается",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "есть проблемы",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "воды достаточно в любое время",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                }
+            ],
             type: StepType.INDICATOR,
             nextStepId: 10,
             isComplete: false
@@ -226,7 +546,62 @@ export class StepStore {
         {
             id: 10,
             name: "Среда населенных пунктов",
-            questions: [],
+            questions: [
+                {
+                    id: 14,
+                    content: "Озеленение населенного пункта",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "10% и менее",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "30%",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "50%",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "80% и более",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                },
+                {
+                    id: 15,
+                    content: "Наличие лесозащитных полос вдоль дорог и трасс",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "10% и менее",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "30%",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "50%",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "80% и более",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                }
+            ],
             type: StepType.INDICATOR,
             nextStepId: 11,
             isComplete: false
@@ -234,7 +609,62 @@ export class StepStore {
         {
             id: 11,
             name: "Чрезвычайные ситуации",
-            questions: [],
+            questions: [
+                {
+                    id: 16,
+                    content: "Количество семей (домохозяйств) уязвимых к рискам селей и оползней",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "80% и более",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "50%",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "30%",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "10% и менее",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                },
+                {
+                    id: 17,
+                    content: "Количество семей (домохозяйств) уязвимых к рискам наводнений",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "80% и более",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "50%",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "30%",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "10% и менее",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                }
+            ],
             type: StepType.INDICATOR,
             nextStepId: 12,
             isComplete: false
@@ -242,7 +672,62 @@ export class StepStore {
         {
             id: 12,
             name: "Отходы",
-            questions: [],
+            questions: [
+                {
+                    id: 18,
+                    content: "Количество семей (домохозяйств) сжигающих отходы",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "80% и более",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "50%",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "30%",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "10% и менее",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                },
+                {
+                    id: 19,
+                    content: "Количество семей (домохозяйств) сортирующих отходы",
+                    answers: [
+                        {
+                            id: 1,
+                            content: "10% и менее",
+                            desc: null
+                        },
+                        {
+                            id: 2,
+                            content: "30%",
+                            desc: null
+                        },
+                        {
+                            id: 3,
+                            content: "50%",
+                            desc: null
+                        },
+                        {
+                            id: 4,
+                            content: "80% и более",
+                            desc: null
+                        }
+                    ],
+                    selectAnswerId: -1
+                }
+            ],
             type: StepType.INDICATOR,
             nextStepId: null,
             isComplete: false
@@ -303,5 +788,20 @@ export class StepStore {
         if (!answer) throw Error(`Answer not found (id: ${answerId})`)
 
         return answer
+    }
+
+    public resetSteps = () => {
+        this.steps = this.steps.map(step => {
+            step.isComplete = false
+            step.questions.map(question => {
+                question.selectAnswerId = -1
+                return question
+            })
+            return step
+        })
+    }
+
+    public resetActiveStep = () => {
+        this.active = this.steps[0]
     }
 }

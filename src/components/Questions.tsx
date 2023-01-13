@@ -1,11 +1,11 @@
 import React from "react";
 import {observer} from "mobx-react-lite";
 
-import {NextButton, Question} from "./index";
+import {NextButton, Question, RadarButton} from "./index";
 import {useStores} from "../hooks/use-stores";
 
 export const Questions: React.FC = observer(() => {
-    const {active} = useStores().stepStore
+    const {active, resetSteps, resetActiveStep} = useStores().stepStore
 
     return (
         <>
@@ -20,7 +20,17 @@ export const Questions: React.FC = observer(() => {
                 </div>
             </div>
             {
-                (active.nextStepId && active.isComplete) && <NextButton nextStepId={active.nextStepId}/>
+                (active.nextStepId && active.isComplete) &&
+                <NextButton nextStepId={active.nextStepId}/>
+            }
+            {
+                (!active.nextStepId && active.isComplete) &&
+                <RadarButton
+                    onClick={() => {
+                        resetSteps()
+                        resetActiveStep()
+                    }}
+                />
             }
         </>
     )

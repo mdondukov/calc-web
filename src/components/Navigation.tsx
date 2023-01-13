@@ -90,25 +90,25 @@ function getIcon(step: IStep) {
         case 2:
             return <FaMountain size={ICON_SIZE} title={step.name}/>
         case 3:
-            return <MdAgriculture size={ICON_SIZE} title={step.name}/>
-        case 4:
-            return <FaHeartbeat size={ICON_SIZE} title={step.name}/>
-        case 5:
-            return <FaCar size={ICON_SIZE} title={step.name}/>
-        case 6:
-            return <FaCity size={ICON_SIZE} title={step.name}/>
-        case 7:
-            return <FaRecycle size={ICON_SIZE} title={step.name}/>
-        case 8:
             return <FaUsers size={ICON_SIZE} title={step.name}/>
-        case 9:
+        case 4:
+            return <MdAgriculture size={ICON_SIZE} title={step.name}/>
+        case 5:
             return <RiLightbulbFlashFill size={ICON_SIZE} title={step.name}/>
-        case 10:
+        case 6:
+            return <FaHeartbeat size={ICON_SIZE} title={step.name}/>
+        case 7:
             return <FaTree size={ICON_SIZE} title={step.name}/>
-        case 11:
+        case 8:
+            return <FaCar size={ICON_SIZE} title={step.name}/>
+        case 9:
             return <MdSanitizer size={ICON_SIZE} title={step.name}/>
-        case 12:
+        case 10:
+            return <FaCity size={ICON_SIZE} title={step.name}/>
+        case 11:
             return <RiAlarmWarningFill size={ICON_SIZE} title={step.name}/>
+        case 12:
+            return <FaRecycle size={ICON_SIZE} title={step.name}/>
         default:
             return <AiOutlineArrowRight size={ICON_SIZE} title={step.name}/>
     }

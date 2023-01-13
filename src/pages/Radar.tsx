@@ -1,18 +1,9 @@
 import React from "react";
 import {ResponsiveRadar} from "@nivo/radar"
-
-type IndicatorType = {
-    name: string,
-    value: number
-}
-
-const getHeight = (width: number) => {
-    let height = 600
-    if (width <= 640) height = 300
-    return height
-}
+import {useStores} from "../hooks/use-stores";
 
 const Radar: React.FC = () => {
+    const {indicators} = useStores().indicatorStore
     const [width, setWidth] = React.useState(window.innerWidth)
 
     React.useEffect(() => {
@@ -68,47 +59,10 @@ const Radar: React.FC = () => {
     )
 }
 
-export default Radar
+const getHeight = (width: number) => {
+    let height = 600
+    if (width <= 640) height = 300
+    return height
+}
 
-const indicators: IndicatorType[] = [
-    {
-        name: "1. Самоорганизация и потенциал местного сообщества",
-        value: 2.5
-    },
-    {
-        name: "2. Сельское хозяйство",
-        value: 1.5
-    },
-    {
-        name: "3. Энергетика и энергоэффективность",
-        value: 0.5
-    },
-    {
-        name: "4. Здоровье населения",
-        value: 1.7
-    },
-    {
-        name: "5. Естественная среда",
-        value: 2.0
-    },
-    {
-        name: "6. Инфраструктура, туризм, транспорт",
-        value: 2.5
-    },
-    {
-        name: "7. Вода, санитария, гигиена",
-        value: 2.3
-    },
-    {
-        name: "8. Среда населенных пунктов",
-        value: 1.0
-    },
-    {
-        name: "9. Чрезвычайные ситуации",
-        value: 1.5
-    },
-    {
-        name: "10. Отходы",
-        value: 0.5
-    }
-]
+export default Radar
