@@ -1,6 +1,7 @@
 import React from "react";
 import {AiOutlineClose} from "react-icons/ai";
 import {observer} from "mobx-react-lite";
+import {useIntl} from "react-intl";
 
 import {NextButton} from "./index";
 import {IAnswer} from "../store/StepStore";
@@ -8,6 +9,7 @@ import {useStores} from "../hooks/use-stores";
 import altitudePng from "../assets/img/altitude.png"
 
 export const Altitude: React.FC = observer(() => {
+    const intl = useIntl()
     const {active, setSelectAnswer, fetchAnswer, setIncompleteStep} = useStores().stepStore
     const question = active.questions[0]
     const [answer, setAnswer] = React.useState<IAnswer | null>(null)
@@ -25,7 +27,7 @@ export const Altitude: React.FC = observer(() => {
             </h1>
             <div className="w-full relative">
                 <div className="w-10/12 mx-auto">
-                    <img src={altitudePng} alt="Высота над уровнем моря"/>
+                    <img src={altitudePng} alt={intl.formatMessage({id: "label.altitude"})}/>
                 </div>
                 {
                     (!answer || answer.id === 1) && (

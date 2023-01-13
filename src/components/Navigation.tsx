@@ -1,5 +1,6 @@
 import React from "react";
 import {observer} from "mobx-react-lite";
+import {useIntl} from "react-intl";
 import {AiOutlineArrowRight} from "react-icons/ai";
 import {BsFillGeoAltFill} from "react-icons/bs";
 import {FaCar, FaCity, FaHeartbeat, FaMountain, FaRecycle, FaTree, FaUsers} from "react-icons/fa";
@@ -13,6 +14,7 @@ import {Alert, AlertType, IAlert} from "./Alert";
 const ICON_SIZE = 32
 
 export const Navigation: React.FC = observer(() => {
+    const intl = useIntl()
     const {steps, active, setActiveStep} = useStores().stepStore
     const [alert, setAlert] = React.useState<IAlert | null>(null)
     const [openAlert, setOpenAlert] = React.useState<boolean>(false)
@@ -43,8 +45,10 @@ export const Navigation: React.FC = observer(() => {
                                         } else {
                                             setAlert({
                                                 type: AlertType.ERROR,
-                                                name: "Ошибка",
-                                                desc: `Невозможно перейти к разделу "${step.name}". Сначала ответьте на все вопросы текущего раздела.`
+                                                name: intl.formatMessage({id: "label.error"}),
+                                                desc: intl.formatMessage(
+                                                    {id: "label.error.step.incomplete"},
+                                                    {stepName: step.name})
                                             })
                                             setOpenAlert(true)
                                         }

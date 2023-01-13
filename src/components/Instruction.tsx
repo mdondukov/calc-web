@@ -1,10 +1,12 @@
 import React from "react";
+import {useIntl} from "react-intl";
 import {AiOutlineRead} from "react-icons/ai";
 
 import jamInstSvg from "../assets/img/jamilya_instr.svg";
 import {Modal} from "./";
 
 export const Instruction: React.FC = () => {
+    const intl = useIntl()
     const [open, setOpen] = React.useState<boolean>(false)
 
     return (
@@ -17,7 +19,7 @@ export const Instruction: React.FC = () => {
                     <AiOutlineRead size={34}/>
                 </div>
                 <div className="flex-auto font-bold uppercase align-middle">
-                    Очень краткая инструкция
+                    {intl.formatMessage({id: "label.instruction"})}
                 </div>
             </button>
             {
@@ -45,7 +47,11 @@ export const Instruction: React.FC = () => {
                             </div>
                             <div className="col-span-4">
                                 <div className="flex justify-end">
-                                    <img src={jamInstSvg} alt="Джамиля" className="w-[212px]"/>
+                                    <img
+                                        src={jamInstSvg}
+                                        alt={intl.formatMessage({id: "label.jamilya"})}
+                                        className="w-[212px]"
+                                    />
                                 </div>
                             </div>
                         </div>

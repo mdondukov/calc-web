@@ -2,13 +2,16 @@ import React from "react";
 
 import {MainButton, Instruction} from "../components";
 import jamStartSvg from "../assets/img/jamilya_start.svg"
+import {useIntl} from "react-intl";
 
 const Home: React.FC = () => {
+    const intl = useIntl()
+
     return (
         <div className="lg:grid lg:grid-cols-12">
             <div className="col-span-6">
                 <h1 className="text-4xl text-lime-500 font-bold uppercase mb-12">
-                    Самооценка местных сообществ к изменению климата
+                    {intl.formatMessage({id: "page.home.name"})}
                 </h1>
                 <div className="text-lg font-medium text-blue-800 mb-12">
                     <p className="mb-4">Вы узнаете какие климатические риски характерны именно для Вашего местного
@@ -18,7 +21,7 @@ const Home: React.FC = () => {
                         адаптации и смягчения последствий изменения климата.</p>
                     <p>И еще это интересный и увлекательный процесс!</p>
                 </div>
-                <MainButton path="/poll" name="Начать"/>
+                <MainButton path="/poll" name={intl.formatMessage({id: "label.start"})}/>
             </div>
             <div className="col-span-6">
                 <div className="flex lg:ml-6">
@@ -34,7 +37,11 @@ const Home: React.FC = () => {
                         </div>
                     </div>
                     <div className="flex-none">
-                        <img src={jamStartSvg} alt="Жамиля" className="w-[240px]"/>
+                        <img
+                            src={jamStartSvg}
+                            alt={intl.formatMessage({id: "label.jamilya"})}
+                            className="w-[240px]"
+                        />
                     </div>
                 </div>
             </div>

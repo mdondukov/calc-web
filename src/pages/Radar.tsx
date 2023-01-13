@@ -1,17 +1,19 @@
 import React from "react";
 import {ResponsiveRadar} from "@nivo/radar"
 import {observer} from "mobx-react-lite";
+import {useIntl} from "react-intl";
 
 import {useStores} from "../hooks/use-stores";
 
 const Radar: React.FC = observer(() => {
+    const intl = useIntl()
     const {indicators} = useStores().indicatorStore
     const {windowDimensions} = useStores().uiStore
 
     return (
         <>
             <h1 className="text-4xl text-lime-500 font-bold uppercase mb-12">
-                Радар уязвимости
+                {intl.formatMessage({id: "page.radar.name"})}
             </h1>
             <div className="radar" style={{height: getHeight(windowDimensions.width)}}>
                 <ResponsiveRadar

@@ -1,4 +1,6 @@
-import {action, makeAutoObservable, observable} from "mobx";
+import {makeAutoObservable, observable} from "mobx";
+
+export const DEFAULT_LOCALE = "ru"
 
 export interface IWindowDimensions {
     width: number
@@ -6,7 +8,7 @@ export interface IWindowDimensions {
 }
 
 export class UIStore {
-    public locale: string = "ru"
+    public locale: string = DEFAULT_LOCALE
 
     public windowDimensions: IWindowDimensions = {
         width: window.innerWidth,
