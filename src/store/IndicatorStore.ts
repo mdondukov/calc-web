@@ -1,10 +1,12 @@
-export type IIndicator = {
+import {makeAutoObservable} from "mobx";
+
+export type Indicator = {
     name: string
     value: number
 }
 
 export class IndicatorStore {
-    public indicators: IIndicator[] = [
+    public indicators: Indicator[] = [
         {
             name: "1. Самоорганизация и потенциал местного сообщества",
             value: 2.5
@@ -46,4 +48,8 @@ export class IndicatorStore {
             value: 0.5
         }
     ]
+
+    constructor() {
+        makeAutoObservable(this)
+    }
 }

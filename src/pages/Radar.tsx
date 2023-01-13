@@ -1,25 +1,19 @@
 import React from "react";
 import {ResponsiveRadar} from "@nivo/radar"
+import {observer} from "mobx-react-lite";
+
 import {useStores} from "../hooks/use-stores";
 
-const Radar: React.FC = () => {
+const Radar: React.FC = observer(() => {
     const {indicators} = useStores().indicatorStore
-    const [width, setWidth] = React.useState(window.innerWidth)
-
-    React.useEffect(() => {
-        const handleResize = () => {
-            setWidth(window.innerWidth);
-        };
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, [width])
+    const {windowDimensions} = useStores().uiStore
 
     return (
         <>
             <h1 className="text-4xl text-lime-500 font-bold uppercase mb-12">
                 Радар уязвимости
             </h1>
-            <div className="radar" style={{height: getHeight(width)}}>
+            <div className="radar" style={{height: getHeight(windowDimensions.width)}}>
                 <ResponsiveRadar
                     data={indicators}
                     keys={["value"]}
@@ -57,12 +51,11 @@ const Radar: React.FC = () => {
             </div>
         </>
     )
-}
+})
 
-const getHeight = (width: number) => {
-    let height = 600
-    if (width <= 640) height = 300
-    return height
+const getHeight = (windowWidth: number) => {
+    if (windowWidth <= 640) return 300
+    return 600
 }
 
 export default Radar
