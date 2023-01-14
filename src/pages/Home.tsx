@@ -1,11 +1,34 @@
 import React from "react";
+import {observer} from "mobx-react-lite";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import {useIntl} from "react-intl";
 
 import {MainButton, Instruction} from "../components";
 import jamStartSvg from "../assets/img/jamilya_start.svg"
-import {useIntl} from "react-intl";
+import {useStores} from "../hooks/use-stores";
 
-const Home: React.FC = () => {
+const Home: React.FC = observer(() => {
     const intl = useIntl()
+    const {locale} = useStores().uiStore
+    const [intro, setIntro] = React.useState("")
+    const [welcome, setWelcome] = React.useState("")
+
+    React.useEffect(() => {
+        fetch(`/md/intro-${locale}.md`)
+            .then(res => res.text())
+            .then((text) => setIntro(text))
+            .catch((e) => {
+                console.error(e)
+            })
+
+        fetch(`/md/welcome-${locale}.md`)
+            .then(res => res.text())
+            .then((text) => setWelcome(text))
+            .catch((e) => {
+                console.error(e)
+            })
+    }, [locale])
 
     return (
         <div className="lg:grid lg:grid-cols-12">
@@ -14,12 +37,7 @@ const Home: React.FC = () => {
                     {intl.formatMessage({id: "page.home.name"})}
                 </h1>
                 <div className="text-lg font-medium text-blue-800 mb-12">
-                    <p className="mb-4">Вы узнаете какие климатические риски характерны именно для Вашего местного
-                        сообщества.</p>
-                    <p className="mb-4">Вы узнаете свои сильные и слабые стороны.</p>
-                    <p className="mb-4">На основе полученных рекомендаций мы сможем составить план действий для
-                        адаптации и смягчения последствий изменения климата.</p>
-                    <p>И еще это интересный и увлекательный процесс!</p>
+                    <ReactMarkdown children={intro} remarkPlugins={[remarkGfm]}/>
                 </div>
                 <MainButton path="/poll" name={intl.formatMessage({id: "label.start"})}/>
             </div>
@@ -27,10 +45,7 @@ const Home: React.FC = () => {
                 <div className="flex lg:ml-6">
                     <div className="flex-auto -mr-10">
                         <div className="bg-white rounded-xl px-6 py-8 mb-12 text-center">
-                            <p className="mb-4 break-normal">
-                                Здравствуйте, меня зовут Жамиля! Я помогу Вам узнать,
-                                насколько Ваше местное сообщество уязвимо к изменению климата.</p>
-                            <p>Жмите «Начать» и отвечайте на несложные вопросы.</p>
+                            <ReactMarkdown children={welcome} remarkPlugins={[remarkGfm]}/>
                         </div>
                         <div className="flex justify-center">
                             <Instruction/>
@@ -47,6 +62,6 @@ const Home: React.FC = () => {
             </div>
         </div>
     )
-}
+})
 
 export default Home

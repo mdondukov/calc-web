@@ -1,13 +1,28 @@
 import React from "react";
+import {observer} from "mobx-react-lite";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import {useIntl} from "react-intl";
 import {AiOutlineRead} from "react-icons/ai";
 
+import {useStores} from "../hooks/use-stores";
 import jamInstSvg from "../assets/img/jamilya_instr.svg";
 import {Modal} from "./";
 
-export const Instruction: React.FC = () => {
+export const Instruction: React.FC = observer(() => {
     const intl = useIntl()
+    const {locale} = useStores().uiStore
     const [open, setOpen] = React.useState<boolean>(false)
+    const [content, setContent] = React.useState("")
+
+    React.useEffect(() => {
+        fetch(`/md/intro-${locale}.md`)
+            .then(res => res.text())
+            .then((text) => setContent(text))
+            .catch((e) => {
+                console.error(e)
+            })
+    }, [locale])
 
     return (
         <>
@@ -28,21 +43,10 @@ export const Instruction: React.FC = () => {
                         <div className="lg:grid lg:grid-cols-12">
                             <div className="col-span-8">
                                 <h1 className="text-3xl text-lime-500 font-bold uppercase mb-8">
-                                    Как пройти самооценку?
+                                    {intl.formatMessage({id: "page.instr.name"})}
                                 </h1>
                                 <div className="text-lg font-medium text-blue-800 mb-8">
-                                    <p className="mb-4">
-                                        Самооценка это...состоит из 11 блоков и результата вот тут вы
-                                        видите на каком Вы шаге и стрелочка вверх на иконки, которые шаги показывают
-                                    </p>
-                                    <p className="mb-4">
-                                        Вы можете проходить как по отдельным блокам и получить рекомендации,
-                                        так и полностью, тогда получите радар уязвимости и перечень мер по всем
-                                        блокам самооценки
-                                    </p>
-                                    <p>
-                                        Радар выглядит так: и выноски тут максимальные баллы, тут ваши
-                                    </p>
+                                    <ReactMarkdown children={content} remarkPlugins={[remarkGfm]}/>
                                 </div>
                             </div>
                             <div className="col-span-4">
@@ -60,4 +64,4 @@ export const Instruction: React.FC = () => {
             }
         </>
     )
-}
+})
