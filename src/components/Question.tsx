@@ -1,16 +1,16 @@
 import React from "react";
 import {observer} from "mobx-react-lite";
 
-import {IQuestion} from "../store/StepStore";
 import {useStores} from "../hooks/use-stores";
+import {IAnswerSelect, IQuestion} from "../types/question";
 
 interface QuestionProps {
-    question: IQuestion,
+    question: IQuestion
     num: number
 }
 
 export const Question: React.FC<QuestionProps> = observer(({question, num}) => {
-    const {active, setSelectAnswer} = useStores().stepStore
+    const {stepStore, questionStore} = useStores()
 
     return (
         <div className="relative flex flex-col gap-6 sm:flex-row md:flex-col lg:flex-row">
@@ -24,10 +24,15 @@ export const Question: React.FC<QuestionProps> = observer(({question, num}) => {
                         question.answers.map((answer, index) =>
                             <button key={answer.id}
                                     type="button"
-                                    onClick={() => setSelectAnswer(active.id, question.id, answer.id)}
+                                    onClick={() => {
+                                        questionStore.setSelectAnswer(stepStore.activeStep.id, question.id, answer.id)
+                                        if (questionStore.isAllQuestionsComplete(stepStore.activeStep.id)) {
+                                            stepStore.setCompleteStep(stepStore.activeStep.id)
+                                        }
+                                    }}
                                     className={
                                         getButtonClass(index, question.answers.length - 1) +
-                                        getButtonSelectClass(answer.id, question.selectAnswerId)
+                                        getButtonSelectClass(question.id, answer.id, questionStore.selectAnswers)
                                     }>
                                 {answer.content}
                             </button>
@@ -56,6 +61,7 @@ const getButtonClass = (currentIndex: number, lastIndex: number) => {
         return className + " border-r"
 }
 
-const getButtonSelectClass = (currentAnswerId: number, selectAnswerId: number) => {
-    return currentAnswerId === selectAnswerId ? " z-20 ring-1 ring-lime-700 text-lime-800 bg-lime-400" : ""
+const getButtonSelectClass = (questionId: number, answerId: number, selectAnswers: IAnswerSelect[]): string => {
+    return  selectAnswers.find(answer => answer.questionId === questionId && answer.answerId === answerId)
+        ? " z-20 ring-1 ring-lime-700 text-lime-800 bg-lime-400" : ""
 }

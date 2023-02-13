@@ -1,12 +1,17 @@
 import {createContext} from "react";
+
 import {StepStore} from "./StepStore";
-import {IndicatorStore} from "./IndicatorStore";
-import {UIStore} from "./UIStore";
+import {RegionStore} from "./RegionStore";
+import {QuestionStore} from "./QuestionStore";
+import {SummaryStore} from "./SummaryStore";
 import {MessageStore} from "./MessageStore";
+import {UIStore} from "./UIStore";
 
 export const rootStoreContext = createContext({
     stepStore: new StepStore(),
-    indicatorStore: new IndicatorStore(),
-    uiStore: new UIStore(),
-    messageStore: new MessageStore()
+    regionStore: new RegionStore(),
+    questionStore: new QuestionStore(),
+    summaryStore: new SummaryStore(),
+    messageStore: new MessageStore(),
+    uiStore: new UIStore()
 })

@@ -1,19 +1,10 @@
 import React from "react";
 import {AiOutlineClose} from "react-icons/ai";
-
-export interface IAlert {
-    type: AlertType
-    name: string
-    desc: string
-}
+import {AlertType, IAlert} from "../types/alert";
 
 interface AlertProps {
     alert: IAlert
     setOpen: (open: boolean) => void
-}
-
-export enum AlertType {
-    ERROR, WARN
 }
 
 export const Alert: React.FC<AlertProps> = ({alert, setOpen}) => {
