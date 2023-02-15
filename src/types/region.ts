@@ -9,6 +9,7 @@ export interface IArea {
     id: number
     name: string
     descr: string
+    impact: string
     ord: number
 }
 

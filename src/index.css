@@ -25,3 +25,20 @@ p {
 p:last-child {
     margin-bottom: 0;
 }
+
+.area-impact h3 {
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    text-transform: uppercase;
+    /*color: rgb(132 204 22);*/
+    color: rgb(30 64 175);
+    margin-bottom: 1rem;
+}
+
+.area-impact ul {
+    list-style-type: inherit;
+    list-style-position: outside;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+}

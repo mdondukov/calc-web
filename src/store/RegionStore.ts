@@ -1,4 +1,4 @@
-import {IRegion, IRegionSelect} from "../types/region";
+import {IArea, IRegion, IRegionSelect} from "../types/region";
 import {makeAutoObservable} from "mobx";
 
 export class RegionStore {
@@ -36,6 +36,12 @@ export class RegionStore {
         const region = this._regions.find(r => r.id === regionId)
         if (!region) throw Error(`Region not found (id: ${regionId})`)
         return region
+    }
+
+    public getArea = (areaId: number): IArea => {
+        const area = this._regions.flatMap(r => r.areas).find(a => a.id === areaId)
+        if (!area) throw Error(`Area not found (id: ${areaId})`)
+        return area
     }
 
     public get selectRegion() {

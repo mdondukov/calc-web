@@ -16,7 +16,7 @@ export const Instruction: React.FC = observer(() => {
     const [content, setContent] = React.useState("")
 
     React.useEffect(() => {
-        fetch(`/md/intro-${locale}.md`)
+        fetch(`/md/tutorial-${locale}.md`)
             .then(res => res.text())
             .then((text) => setContent(text))
             .catch((e) => {
