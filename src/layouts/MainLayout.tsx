@@ -5,8 +5,8 @@ import {Header} from "../components";
 
 const MainLayout: React.FC = () => {
     return (
-        <div className="py-10">
-            <div className="w-4/5 mx-auto">
+        <div className="md:py-12 py-8">
+            <div className="lg:w-4/5 md:w-10/12 w-11/12 mx-auto">
                 <Header/>
                 <Outlet/>
             </div>

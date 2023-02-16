@@ -14,6 +14,15 @@ body {
     width: 300px;
 }
 
+.radar-wrap {
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+.radar {
+    scroll-snap-align: center;
+}
+
 .radar text {
     font-weight: 500;
 }
@@ -36,9 +45,19 @@ p:last-child {
     margin-bottom: 1rem;
 }
 
+.area-impact.mob h3 {
+    font-size: 1rem;
+    line-height: 1.25rem;
+}
+
 .area-impact ul {
     list-style-type: inherit;
     list-style-position: outside;
     margin-bottom: 1rem;
     padding-left: 1rem;
+}
+
+.area-impact.mob p, ul {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
 }

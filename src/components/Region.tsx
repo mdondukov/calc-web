@@ -9,7 +9,7 @@ import {fetchRegions} from "../http/api";
 import {IRegionSelect} from "../types/region";
 
 export const Region: React.FC = observer(() => {
-    const {stepStore, regionStore} = useStores()
+    const {stepStore, regionStore, uiStore} = useStores()
 
     React.useEffect(() => {
         regionStore.setLoading(true)
@@ -38,9 +38,11 @@ export const Region: React.FC = observer(() => {
 
     return (
         <>
-            <h1 className="text-4xl text-lime-500 font-bold uppercase mb-12">{stepStore.activeStep.name}</h1>
+            <h1 className="text-2xl sm:text-4xl text-lime-500 font-bold uppercase mb-6 lg:mb-12">
+                {stepStore.activeStep.name}
+            </h1>
             <div className="w-full relative">
-                <div className="w-10/12 mx-auto">
+                <div className="xl:w-10/12 xl:mx-auto mx-0">
                     <svg baseProfile="tiny" fill="#AEAEAE" stroke="#FFF" strokeLinecap="round"
                          strokeLinejoin="round" strokeWidth="2" version="1.2" viewBox="0 0 1000 493"
                          xmlns="http://www.w3.org/2000/svg">
@@ -111,51 +113,50 @@ export const Region: React.FC = observer(() => {
                 {
                     regionStore.selectRegion.regionId > -1 && (
                         <div
-                            className={
-                                `absolute w-2/5 rounded-xl bg-white/80 p-10 shadow-2xl ` +
-                                getPosition(regionStore.selectRegion.regionId)
-                            }
+                            className={getModalClass(regionStore.selectRegion.regionId, uiStore.windowDimensions.width)}
                         >
-                            <AiOutlineClose
-                                size={22}
-                                onClick={() => {
-                                    regionStore.setSelectRegion({regionId: -1, areaId: -1})
-                                    stepStore.setIncompleteStep(stepStore.activeStep.id)
-                                }}
-                                className="text-blue-800 hover:opacity-75 absolute top-4 right-4 cursor-pointer"
-                            />
-                            <h2 className="text-2xl text-lime-500 font-bold uppercase mb-6">
-                                {regionStore.getRegion(regionStore.selectRegion.regionId).name}
-                            </h2>
-                            <div className="mb-6">
-                                {
-                                    regionStore.getRegion(regionStore.selectRegion.regionId).areas.map(area =>
-                                        <div
-                                            key={area.id}
-                                            onClick={() => {
-                                                regionStore.setSelectRegion({
-                                                    regionId: regionStore.selectRegion.regionId,
-                                                    areaId: area.id
-                                                })
-                                            }}
-                                            className="flex cursor-default mb-4"
-                                        >
-                                            <div className={
-                                                `flex items-baseline mr-2` +
-                                                `${area.id === regionStore.selectRegion.areaId ? ` text-blue-800` : ``}`
-                                            }>
-                                                {
-                                                    area.id === regionStore.selectRegion.areaId
-                                                        ? <IoIosRadioButtonOn size={22}/>
-                                                        : <IoIosRadioButtonOff size={22}/>
-                                                }
+                            <div className="relative">
+                                <AiOutlineClose
+                                    size={22}
+                                    onClick={() => {
+                                        regionStore.setSelectRegion({regionId: -1, areaId: -1})
+                                        stepStore.setIncompleteStep(stepStore.activeStep.id)
+                                    }}
+                                    className="text-blue-800 hover:opacity-75 absolute -top-6 -right-6 cursor-pointer"
+                                />
+                                <h2 className="text-xl sm:text-2xl text-lime-500 font-bold uppercase mb-6">
+                                    {regionStore.getRegion(regionStore.selectRegion.regionId).name}
+                                </h2>
+                                <div className="mb-6">
+                                    {
+                                        regionStore.getRegion(regionStore.selectRegion.regionId).areas.map(area =>
+                                            <div
+                                                key={area.id}
+                                                onClick={() => {
+                                                    regionStore.setSelectRegion({
+                                                        regionId: regionStore.selectRegion.regionId,
+                                                        areaId: area.id
+                                                    })
+                                                }}
+                                                className="flex cursor-default mb-4"
+                                            >
+                                                <div className={
+                                                    `flex items-baseline mr-2` +
+                                                    `${area.id === regionStore.selectRegion.areaId ? ` text-blue-800` : ``}`
+                                                }>
+                                                    {
+                                                        area.id === regionStore.selectRegion.areaId
+                                                            ? <IoIosRadioButtonOn size={22}/>
+                                                            : <IoIosRadioButtonOff size={22}/>
+                                                    }
+                                                </div>
+                                                <div className="text-sm">
+                                                    <p>{area.name}</p>
+                                                </div>
                                             </div>
-                                            <div className="text-sm">
-                                                <p>{area.name}</p>
-                                            </div>
-                                        </div>
-                                    )
-                                }
+                                        )
+                                    }
+                                </div>
                             </div>
                             {
                                 stepStore.activeStep.nextStepId &&
@@ -176,20 +177,24 @@ const isRegionSelect = (regionId: number, selectRegion: IRegionSelect): boolean 
     return selectRegion.regionId === -1 || selectRegion.regionId === regionId
 }
 
-const getPosition = (id: number): string => {
+const getModalClass = (id: number, windowWidth: number): string => {
+    const className = "rounded-xl bg-white/80 p-10"
+
+    if (windowWidth < 1280) return className + " mt-6"
+
     switch (id) {
         case 1:
         case 2:
         case 3: {
-            return "top-0 left-0"
+            return className + " absolute w-2/5  shadow-2xl top-0 left-0"
         }
         case 4:
         case 5:
         case 6:
         case 7: {
-            return "top-0 right-0"
+            return className + " absolute w-2/5  shadow-2xl top-0 right-0"
         }
         default:
-            return ""
+            return className
     }
 }

@@ -49,6 +49,10 @@ export class QuestionStore {
         return questionsLength === completeLength
     }
 
+    public isAnswerSelect = (questionId: number, answerId: number) => {
+        return !!this._selectAnswers.find(answer => answer.questionId === questionId && answer.answerId === answerId)
+    }
+
     public get selectAnswers() {
         return this._selectAnswers
     }

@@ -25,7 +25,9 @@ export const Questions: React.FC = observer(() => {
 
     return (
         <>
-            <h1 className="text-4xl text-lime-500 font-bold uppercase mb-12">{stepStore.activeStep.name}</h1>
+            <h1 className="text-2xl sm:text-4xl text-lime-500 font-bold uppercase mb-6 sm:mb-12">
+                {stepStore.activeStep.name}
+            </h1>
             <div className="max-w-lg sm:mx-auto md:max-w-none mb-12">
                 <div className="grid grid-cols-1 gap-y-12">
                     {
