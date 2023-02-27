@@ -36,7 +36,8 @@ export const Question: React.FC<QuestionProps> = observer(({question, num}) => {
                                           className={
                                               getButtonClass(index, question.answers.length - 1) +
                                               `${questionStore.isAnswerSelect(question.id, answer.id)
-                                                  ? ` z-20 ring-1 ring-lime-700 text-lime-800 bg-lime-300` : ``}`
+                                                  ? ` z-20 ring-1 ring-lime-700 text-lime-800 bg-lime-300`
+                                                  : ` bg-lime-200`}`
                                           }>
                                     {answer.content}
                                 </button>
@@ -74,7 +75,7 @@ export const Question: React.FC<QuestionProps> = observer(({question, num}) => {
 
 const getButtonClass = (currentIndex: number, lastIndex: number) => {
     const className = `xl:min-w-[160px] px-4 py-2 border-t border-b font-medium text-gray-900 hover:text-lime-800 ` +
-        `bg-lime-200 border-lime-500 hover:bg-lime-300 max-xl:text-sm`
+        `border-lime-500 hover:bg-lime-300 max-xl:text-sm`
 
     if (currentIndex === 0)
         return className + " border-l border-r rounded-l-lg"
