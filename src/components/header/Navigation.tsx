@@ -24,7 +24,7 @@ export const Navigation: React.FC = observer(() => {
     return (
         <>
             <div className="md:mb-10 mb-6 overflow-x-auto h-[50px] md:h-auto">
-                <div className="flex gap-4 mb:gap-0">
+                <div className="flex">
                     {
                         stepStore.steps.map((step, index) =>
                             <div key={step.id} className={index === 0 ? `flex-none` : `grow flex`}>
@@ -32,7 +32,7 @@ export const Navigation: React.FC = observer(() => {
                                     index !== 0 && (
                                         <div className="grow inline-flex items-center">
                                             <hr className={
-                                                `w-full text-white border-t-2 border-t border-dotted ` +
+                                                `md:w-full w-4 text-white border-t-2 border-t border-dotted ` +
                                                 `${(step.id === stepStore.activeStep.id || stepStore.isCompleteStep(step.id))
                                                     ? `border-amber-300` : `text-gray-300`
                                                 }`
