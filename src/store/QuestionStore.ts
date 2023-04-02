@@ -43,6 +43,14 @@ export class QuestionStore {
         return this._questions.filter(question => question.stepId === stepId)
     }
 
+    public calcResult = (stepId: number) => {
+        const selects = this._selectAnswers.filter(a => a.stepId === stepId)
+        const answers = this._questions.flatMap(question => question.answers)
+            .filter(answer => !!selects.find(select => select.answerId === answer.id))
+        const result = answers.map(answer => answer.weight).reduce((a, b) => a + b, 0) / answers.length
+        return Math.round(result * 10) / 10
+    }
+
     public isAllQuestionsComplete = (stepId: number) => {
         const questionsLength = this._questions.filter(q => q.stepId === stepId).length
         const completeLength = this._selectAnswers.filter(a => a.stepId === stepId).length

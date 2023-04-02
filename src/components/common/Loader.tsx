@@ -1,5 +1,5 @@
 import React from "react";
-import {useStores} from "../hooks/use-stores";
+import {useStores} from "../../hooks/use-stores";
 import {observer} from "mobx-react-lite";
 
 export const Loader: React.FC = observer(() => {

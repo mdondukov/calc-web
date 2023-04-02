@@ -2,8 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {useIntl} from "react-intl";
 
-import logoSvg from "../assets/img/logo_green.svg";
-import partnersPng from "../assets/img/partners.png";
+import logoSvg from "../../assets/img/logo_green.svg";
+import partnersPng from "../../assets/img/partners.png";
 
 export const Header: React.FC = () => {
     const intl = useIntl()

@@ -9,6 +9,7 @@ export interface IAnswer {
     id: number
     content: string
     descr: string | null
+    weight: number
 }
 
 export interface IAnswerSelect {

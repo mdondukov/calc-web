@@ -57,7 +57,14 @@ p:last-child {
     padding-left: 1rem;
 }
 
-.area-impact.mob p, ul {
+.area-impact.mob p, .area-impact.mob ul {
     font-size: 0.875rem;
     line-height: 1.25rem;
+}
+
+.resume ul {
+    list-style-type: inherit;
+    list-style-position: outside;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
 }

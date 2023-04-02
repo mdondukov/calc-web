@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm";
 import {useIntl} from "react-intl";
 
 import {InstrButton, MainButton} from "../components";
-import jamStartSvg from "../assets/img/jamilya_start.svg"
+import jamStartSvg from "../assets/img/jamilya/jamilya_start.svg"
 import {useStores} from "../hooks/use-stores";
 
 const Home: React.FC = observer(() => {
@@ -18,16 +18,12 @@ const Home: React.FC = observer(() => {
         fetch(`/md/intro-${locale}.md`)
             .then(res => res.text())
             .then((text) => setIntro(text))
-            .catch((e) => {
-                console.error(e)
-            })
+            .catch((e) => console.error(e))
 
         fetch(`/md/welcome-${locale}.md`)
             .then(res => res.text())
             .then((text) => setWelcome(text))
-            .catch((e) => {
-                console.error(e)
-            })
+            .catch((e) => console.error(e))
     }, [locale])
 
     return (
@@ -43,11 +39,11 @@ const Home: React.FC = observer(() => {
             </div>
             <div className="xl:col-span-6 mt-6 lg:mt-12 xl:mt-0 relative">
                 <div className="grid justify-items-stretch">
-                    <div className="justify-self-end md:z-10 z-0">
+                    <div className="md:justify-self-end justify-self-center md:z-10 z-0">
                         <img
                             src={jamStartSvg}
                             alt={intl.formatMessage({id: "label.jamilya"})}
-                            className="w-[240px]"
+                            className="h-[520px]"
                         />
                     </div>
                 </div>

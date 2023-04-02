@@ -6,6 +6,7 @@ export class StepStore {
     private _steps: IStep[]
     private _complete: number[]
     private _activeStep: IStep | null
+    private _resume: boolean
     private _loading: boolean
     private _error: string | null
 
@@ -13,6 +14,7 @@ export class StepStore {
         this._steps = []
         this._complete = []
         this._activeStep = null
+        this._resume = false
         this._loading = true
         this._error = null
 
@@ -28,7 +30,12 @@ export class StepStore {
 
         if (nextStep) {
             this._activeStep = nextStep
+            this._resume = false
         }
+    }
+
+    public setResume = (resume: boolean) => {
+        this._resume = resume
     }
 
     public setLoading = (loading: boolean) => {
@@ -76,6 +83,10 @@ export class StepStore {
     public get activeStep() {
         if (!this._activeStep) throw Error("Active step must not be a null")
         return this._activeStep
+    }
+
+    public get isResume() {
+        return this._resume
     }
 
     public get isLoading() {

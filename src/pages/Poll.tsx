@@ -1,13 +1,17 @@
 import React from "react";
 import {observer} from "mobx-react-lite";
 
-import {Loader, Navigation, Questions, Radar, Region} from "../components";
+import {Loader, Navigation, Assessment, Radar, Region} from "../components";
 import {useStores} from "../hooks/use-stores";
 import {fetchSteps} from "../http/api";
-import {IStep, StepType} from "../types/step";
+import {StepType} from "../types/step";
 
 const Poll: React.FC = observer(() => {
     const {stepStore} = useStores()
+
+    React.useEffect(() => {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+    }, [stepStore.isResume])
 
     React.useEffect(() => {
         stepStore.setLoading(true)
@@ -21,8 +25,6 @@ const Poll: React.FC = observer(() => {
         })
     }, [])
 
-    React.useEffect(() => window.scrollTo({top: 0, left: 0, behavior: 'smooth'}))
-
     if (stepStore.isLoading) {
         return <Loader/>
     }
@@ -34,21 +36,19 @@ const Poll: React.FC = observer(() => {
     return (
         <>
             <Navigation/>
-            {getComponent(stepStore.activeStep)}
+            {(() => {
+                switch (stepStore.activeStep.type) {
+                    case StepType.REGION:
+                        return <Region/>
+                    case StepType.ASSESSMENT:
+                        return <Assessment/>
+                    case StepType.RADAR:
+                        return <Radar/>
+                }
+            })()}
         </>
     )
 })
 
 export default Poll
-
-function getComponent(activeStep: IStep) {
-    switch (activeStep.type) {
-        case StepType.REGION:
-            return <Region/>
-        case StepType.ASSESSMENT:
-            return <Questions/>
-        case StepType.RADAR:
-            return <Radar/>
-    }
-}
 

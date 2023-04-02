@@ -7,10 +7,10 @@ import {FaCar, FaCity, FaHeartbeat, FaRecycle, FaTree, FaUsers} from "react-icon
 import {MdAgriculture, MdSanitizer} from "react-icons/md";
 import {RiAlarmWarningFill, RiLightbulbFlashFill} from "react-icons/ri";
 
-import {useStores} from "../hooks/use-stores";
-import {IStep} from "../types/step";
-import {AlertType, IAlert} from "../types/alert";
-import {Alert} from "./Alert";
+import {useStores} from "../../hooks/use-stores";
+import {IStep} from "../../types/step";
+import {AlertType, IAlert} from "../../types/alert";
+import {Alert} from "../common/Alert";
 
 const ICON_SIZE = 32
 const ICON_SIZE_MOBILE = 24

@@ -16,9 +16,9 @@ export const InstrButton: React.FC<InstrButtonProps> = ({path}: InstrButtonProps
             className="block flex items-center text-blue-800 hover:opacity-75"
         >
             <div className="flex-none mr-2">
-                <AiOutlineRead size={34}/>
+                <AiOutlineRead size={24}/>
             </div>
-            <div className="flex-auto text-sm font-bold uppercase align-middle">
+            <div className="flex-auto align-middle">
                 {intl.formatMessage({id: "label.instruction"})}
             </div>
         </Link>

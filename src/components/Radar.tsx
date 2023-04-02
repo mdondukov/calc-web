@@ -7,8 +7,10 @@ import {fetchIndicators} from "../http/api";
 import {Loader} from "./index";
 import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
+import {useIntl} from "react-intl";
 
 export const Radar: React.FC = observer(() => {
+    const intl = useIntl()
     const {summaryStore, stepStore, regionStore, questionStore, uiStore} = useStores()
 
     React.useEffect(() => {
@@ -36,6 +38,12 @@ export const Radar: React.FC = observer(() => {
             <h1 className="text-2xl sm:text-4xl text-lime-500 font-bold uppercase mb-6 sm:mb-12">
                 {stepStore.activeStep.name}
             </h1>
+
+            <div className="sm:text-lg font-medium text-blue-800 mb-6 lg:mb-12">
+                <p>{intl.formatMessage({id: "label.radar.congrats"})}</p>
+                <p>{intl.formatMessage({id: "label.radar.info"})}</p>
+            </div>
+
             <div className="radar-wrap">
                 <div
                     className={
@@ -83,6 +91,10 @@ export const Radar: React.FC = observer(() => {
                         }
                     />
                 </div>
+            </div>
+
+            <div className="sm:text-lg font-medium text-blue-800 mb-6 lg:mb-12">
+                <p>{intl.formatMessage({id: "label.radar.impacts.info"})}</p>
             </div>
 
             <div className="bg-white rounded-xl p-10">

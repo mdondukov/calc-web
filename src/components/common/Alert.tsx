@@ -1,6 +1,6 @@
 import React from "react";
 import {AiOutlineClose} from "react-icons/ai";
-import {AlertType, IAlert} from "../types/alert";
+import {AlertType, IAlert} from "../../types/alert";
 
 interface AlertProps {
     alert: IAlert

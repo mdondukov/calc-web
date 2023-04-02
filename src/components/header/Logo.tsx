@@ -1,7 +1,7 @@
 import React from "react"
 import {useIntl} from "react-intl";
 
-import logoSvg from "../assets/img/logo_green.svg"
+import logoSvg from "../../assets/img/logo_green.svg"
 
 export const Logo: React.FC = () => {
     const intl = useIntl()
