@@ -1,6 +1,5 @@
 import {makeAutoObservable, observable} from "mobx";
-
-export const DEFAULT_LOCALE = "ru"
+import {getDefaultUserLocale, HEADER_LOCALE} from "../utils";
 
 const HEADER_HEIGHT = 100.6
 
@@ -10,25 +9,40 @@ export interface IWindowDimensions {
 }
 
 export class UIStore {
-    public locale: string = DEFAULT_LOCALE
-
-    public windowDimensions: IWindowDimensions = {
-        width: window.innerWidth,
-        height: window.innerHeight
-    }
+    private _locale: string
+    private _windowDimensions: IWindowDimensions
 
     constructor() {
-        makeAutoObservable(this, {windowDimensions: observable.struct})
+        this._locale = getDefaultUserLocale()
+        this._windowDimensions = {
+            width: window.innerWidth,
+            height: window.innerHeight
+        }
         window.onresize = () => {
             this.setWindowDimensions({width: window.innerWidth, height: window.innerHeight})
         }
+
+        makeAutoObservable(this, {setWindowDimensions: observable.struct})
     }
 
-    private setWindowDimensions = (dimensions: IWindowDimensions) => {
-        this.windowDimensions = dimensions
+    public setLocale = (locale: string) => {
+        this._locale = locale
+        localStorage.setItem(HEADER_LOCALE, locale)
+    }
+
+    public setWindowDimensions = (dimensions: IWindowDimensions) => {
+        this._windowDimensions = dimensions
+    }
+
+    public get locale(): string {
+        return this._locale
+    }
+
+    public get windowDimensions(): IWindowDimensions {
+        return this._windowDimensions
     }
 
     public get bodyHeight(): number {
-        return this.windowDimensions.height - HEADER_HEIGHT
+        return this._windowDimensions.height - HEADER_HEIGHT
     }
 }

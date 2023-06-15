@@ -7,7 +7,7 @@ import {fetchSteps} from "../http/api";
 import {StepType} from "../types/step";
 
 const Poll: React.FC = observer(() => {
-    const {stepStore} = useStores()
+    const {stepStore, uiStore} = useStores()
 
     React.useEffect(() => {
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
@@ -15,7 +15,7 @@ const Poll: React.FC = observer(() => {
 
     React.useEffect(() => {
         stepStore.setLoading(true)
-        fetchSteps().then(response => {
+        fetchSteps(uiStore.locale).then(response => {
             stepStore.setSteps(response.data)
             stepStore.setActive(response.data[0].id)
             stepStore.setLoading(false)

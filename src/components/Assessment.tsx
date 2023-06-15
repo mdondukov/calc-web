@@ -6,11 +6,11 @@ import {useStores} from "../hooks/use-stores";
 import {fetchAssessment} from "../http/api";
 
 export const Assessment: React.FC = observer(() => {
-    const {questionStore, stepStore} = useStores()
+    const {questionStore, stepStore, uiStore} = useStores()
 
     React.useEffect(() => {
         questionStore.setLoading(true)
-        fetchAssessment().then(response => {
+        fetchAssessment(uiStore.locale).then(response => {
             questionStore.setQuestions(response.data)
             questionStore.setLoading(false)
         }).catch(error => {

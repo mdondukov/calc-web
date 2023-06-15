@@ -1,7 +1,7 @@
 import {makeAutoObservable} from "mobx";
 
 import messageRu from "../i18n/messages-ru.json"
-import messageKg from "../i18n/messages-kg.json"
+import messageKy from "../i18n/messages-ky.json"
 
 export class MessageStore {
     private readonly _messages: { [key: string]: { [id: string]: string } }
@@ -9,7 +9,7 @@ export class MessageStore {
     constructor() {
         this._messages = {
             ru: messageRu,
-            kg: messageKg
+            ky: messageKy
         }
 
         makeAutoObservable(this)

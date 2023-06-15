@@ -2,18 +2,26 @@ import {$host} from "./index";
 import {IRegionSelect} from "../types/region";
 import {IAnswerSelect} from "../types/question";
 
-export const fetchSteps = async () => {
-    const {data} = await $host.get('/v1/poll/steps/')
+const config = (locale: string) => {
+  return {
+      headers: {
+          locale: locale as string
+      }
+  }
+}
+
+export const fetchSteps = async (locale: string) => {
+    const {data} = await $host.get('/v1/poll/steps/', config(locale))
     return data
 }
 
-export const fetchRegions = async () => {
-    const {data} = await $host.get('/v1/poll/regions/')
+export const fetchRegions = async (locale: string) => {
+    const {data} = await $host.get('/v1/poll/regions/', config(locale))
     return data
 }
 
-export const fetchAssessment = async () => {
-    const {data} = await $host.get('/v1/poll/assessment/')
+export const fetchAssessment = async (locale: string) => {
+    const {data} = await $host.get('/v1/poll/assessment/', config(locale))
     return data
 }
 
