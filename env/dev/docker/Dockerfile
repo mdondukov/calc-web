@@ -5,7 +5,7 @@ WORKDIR /app
 RUN npm install -g serve
 
 COPY package*.json ./
-RUN npm run install-all
+RUN npm run install
 
 FROM calc-web
 
