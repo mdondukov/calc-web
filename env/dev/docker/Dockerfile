@@ -14,7 +14,6 @@ COPY public ./public/
 
 ENV NODE_OPTIONS=--max_old_space_size=4096
 RUN npm run build
-COPY env/dev/conf/config.json ./build/config/config.json
 
 EXPOSE 3000
 
