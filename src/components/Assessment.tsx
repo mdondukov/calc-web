@@ -30,12 +30,12 @@ export const Assessment: React.FC = observer(() => {
             </h1>
 
             {
-                getComponent(stepStore.isResume, stepStore.activeStep.descr)
+                getComponent(stepStore.isResume)
             }
         </>
     )
 })
 
-const getComponent = (isResume: boolean, descr: string | null) => {
-    return isResume && descr ? <Resume/> : <Questions/>
+const getComponent = (isResume: boolean) => {
+    return isResume ? <Resume/> : <Questions/>
 }

@@ -1,7 +1,9 @@
 export interface IRegion {
     id: number
+    code: string
     name: string
     descr: string
+    ord: number
     areas: IArea[]
 }
 

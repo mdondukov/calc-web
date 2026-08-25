@@ -38,6 +38,11 @@ export class RegionStore {
         return region
     }
 
+    public getRegionIdByCode = (code: string): number => {
+        const region = this._regions.find(r => r.code === code)
+        return region ? region.id : -1
+    }
+
     public getArea = (areaId: number): IArea => {
         const area = this._regions.flatMap(r => r.areas).find(a => a.id === areaId)
         if (!area) throw Error(`Area not found (id: ${areaId})`)
