@@ -6,12 +6,12 @@ It talks to the [`radar-api`](https://github.com/mdondukov/radar-api) backend
 and is distinguished from its sibling frontend `radar-women` only by
 `REACT_APP_PROJECT_CODE` (`zhashyl-climate` here).
 
-The working branch is `dev` (the repository default); `refact` and `master` are
-leftovers from before it was consolidated.
+Everything lives on `main`; the `archive/*` branches are frozen leftovers from
+before the repository was consolidated.
 
 ## CI/CD
 
-`.github/workflows/ci.yml` runs on every push to `dev` and every PR:
+`.github/workflows/ci.yml` runs on every push to `main` and every PR:
 `npm ci`, `tsc --noEmit`, `npm run build`. `deploy.yml` is manual
 (`workflow_dispatch`) — it builds a `linux/arm64` image, pushes it to
 `ghcr.io/<owner>/calc-web` as `:dev` and `:sha-<short>`, then over SSH runs
