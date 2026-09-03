@@ -28,7 +28,15 @@ export const fetchAssessment = async (locale: string) => {
     return data
 }
 
-export const fetchIndicators = async (region: IRegionSelect | null, answers: IAnswerSelect[]) => {
-    const {data} = await $host.post(`${POLL_BASE}/summary`, {region: region, answers: answers})
+export const fetchIndicators = async (
+    region: IRegionSelect | null,
+    answers: IAnswerSelect[],
+    locale: string
+) => {
+    const {data} = await $host.post(
+        `${POLL_BASE}/summary`,
+        {region: region, answers: answers},
+        config(locale)
+    )
     return data
 }
