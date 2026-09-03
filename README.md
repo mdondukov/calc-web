@@ -1,4 +1,29 @@
-# Getting Started with Create React App
+# calc-web
+
+Frontend for "Жашыл климат", a climate-vulnerability self-assessment for local
+communities in Kyrgyzstan, deployed at [radar.biom.kg](https://radar.biom.kg).
+It talks to the [`radar-api`](https://github.com/mdondukov/radar-api) backend
+and is distinguished from its sibling frontend `radar-women` only by
+`REACT_APP_PROJECT_CODE` (`zhashyl-climate` here).
+
+The working branch is `refact`, not `main`.
+
+## CI/CD
+
+`.github/workflows/ci.yml` runs on every push to `refact` and every PR:
+`npm ci`, `tsc --noEmit`, `npm run build`. `deploy.yml` is manual
+(`workflow_dispatch`) — it builds a `linux/arm64` image, pushes it to
+`ghcr.io/<owner>/calc-web` as `:dev` and `:sha-<short>`, then over SSH runs
+`docker compose pull/up -d/restart proxy` on the server and checks the site
+answers 200. Both run on `ubuntu-24.04-arm`, matching the aarch64 host.
+
+Secrets: `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_SSH_KEY`. Rollback = deploy an
+older `:sha-…` tag.
+
+CRA bakes `REACT_APP_*` in at build time, so the image is environment
+specific: the committed `.env` (prod URL) is what CI bakes in.
+
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
