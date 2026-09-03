@@ -15,7 +15,7 @@ export const Radar: React.FC = observer(() => {
 
     React.useEffect(() => {
         summaryStore.setLoading(true)
-        fetchIndicators(regionStore.selectRegion, questionStore.selectAnswers).then(response => {
+        fetchIndicators(regionStore.selectRegion, questionStore.selectAnswers, uiStore.locale).then(response => {
             summaryStore.setIndicators(response.data.indicators)
             stepStore.setCompleteStep(stepStore.activeStep.id)
             summaryStore.setLoading(false)
