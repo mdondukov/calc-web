@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [refact]
+    branches: [dev]
   pull_request:
 
 jobs:
